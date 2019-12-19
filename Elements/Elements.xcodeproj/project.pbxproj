@@ -7,17 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30EF692823ABCCD000BF4999 /* ElementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF692723ABCCD000BF4999 /* ElementDetailViewController.swift */; };
+		30EF692A23ABCE6100BF4999 /* ElementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF692923ABCE6100BF4999 /* ElementTableViewCell.swift */; };
+		30EF692C23ABCF6B00BF4999 /* ElementData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF692B23ABCF6B00BF4999 /* ElementData.swift */; };
+		30EF692E23ABCFEE00BF4999 /* Network Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF692D23ABCFEE00BF4999 /* Network Helper.swift */; };
+		30EF693323ABD4CA00BF4999 /* UI-ImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF693223ABD4CA00BF4999 /* UI-ImageExtention.swift */; };
 		5734756221DA90C700FB6177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734756121DA90C700FB6177 /* AppDelegate.swift */; };
-		5734756421DA90C700FB6177 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734756321DA90C700FB6177 /* ViewController.swift */; };
+		5734756421DA90C700FB6177 /* ElementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734756321DA90C700FB6177 /* ElementsViewController.swift */; };
 		5734756721DA90C700FB6177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5734756521DA90C700FB6177 /* Main.storyboard */; };
 		5734756921DA90C800FB6177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5734756821DA90C800FB6177 /* Assets.xcassets */; };
 		5734756C21DA90C800FB6177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5734756A21DA90C800FB6177 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30EF692723ABCCD000BF4999 /* ElementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementDetailViewController.swift; sourceTree = "<group>"; };
+		30EF692923ABCE6100BF4999 /* ElementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementTableViewCell.swift; sourceTree = "<group>"; };
+		30EF692B23ABCF6B00BF4999 /* ElementData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementData.swift; sourceTree = "<group>"; };
+		30EF692D23ABCFEE00BF4999 /* Network Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Helper.swift"; sourceTree = "<group>"; };
+		30EF693223ABD4CA00BF4999 /* UI-ImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI-ImageExtention.swift"; sourceTree = "<group>"; };
 		5734755E21DA90C700FB6177 /* Elements.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elements.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5734756121DA90C700FB6177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5734756321DA90C700FB6177 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5734756321DA90C700FB6177 /* ElementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsViewController.swift; sourceTree = "<group>"; };
 		5734756621DA90C700FB6177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5734756821DA90C800FB6177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5734756B21DA90C800FB6177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,10 +45,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30EF693023ABD1E300BF4999 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				30EF692B23ABCF6B00BF4999 /* ElementData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		30EF693123ABD47F00BF4999 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				30EF693223ABD4CA00BF4999 /* UI-ImageExtention.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5734755521DA90C700FB6177 = {
 			isa = PBXGroup;
 			children = (
-				5734756021DA90C700FB6177 /* Elements */,
+				5734756521DA90C700FB6177 /* Main.storyboard */,
+				30EF692D23ABCFEE00BF4999 /* Network Helper.swift */,
+				30EF693023ABD1E300BF4999 /* Model */,
+				5734756021DA90C700FB6177 /* Controllers */,
+				30EF693123ABD47F00BF4999 /* Extensions */,
 				5734755F21DA90C700FB6177 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,15 +81,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5734756021DA90C700FB6177 /* Elements */ = {
+		5734756021DA90C700FB6177 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5734756321DA90C700FB6177 /* ViewController.swift */,
-				5734756521DA90C700FB6177 /* Main.storyboard */,
+				5734756321DA90C700FB6177 /* ElementsViewController.swift */,
+				30EF692923ABCE6100BF4999 /* ElementTableViewCell.swift */,
+				30EF692723ABCCD000BF4999 /* ElementDetailViewController.swift */,
 				5734757321DA90F500FB6177 /* Supporting Files */,
 				5734756D21DA90C800FB6177 /* Info.plist */,
 			);
-			path = Elements;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		5734757321DA90F500FB6177 /* Supporting Files */ = {
@@ -143,7 +174,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5734756421DA90C700FB6177 /* ViewController.swift in Sources */,
+				30EF692C23ABCF6B00BF4999 /* ElementData.swift in Sources */,
+				30EF692E23ABCFEE00BF4999 /* Network Helper.swift in Sources */,
+				5734756421DA90C700FB6177 /* ElementsViewController.swift in Sources */,
+				30EF693323ABD4CA00BF4999 /* UI-ImageExtention.swift in Sources */,
+				30EF692823ABCCD000BF4999 /* ElementDetailViewController.swift in Sources */,
+				30EF692A23ABCE6100BF4999 /* ElementTableViewCell.swift in Sources */,
 				5734756221DA90C700FB6177 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
