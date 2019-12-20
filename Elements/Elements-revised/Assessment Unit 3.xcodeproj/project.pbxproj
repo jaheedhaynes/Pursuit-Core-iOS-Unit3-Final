@@ -17,7 +17,7 @@
 		306182B123ABDFCD001E8CF9 /* UI-ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306182B023ABDFCD001E8CF9 /* UI-ImageExtension.swift */; };
 		306182B623ABE071001E8CF9 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306182B523ABE071001E8CF9 /* NetworkHelper.swift */; };
 		306182B823ABE105001E8CF9 /* ElementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306182B723ABE105001E8CF9 /* ElementDetailViewController.swift */; };
-		306182BA23ABE137001E8CF9 /* elementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306182B923ABE137001E8CF9 /* elementCell.swift */; };
+		306182BA23ABE137001E8CF9 /* ElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306182B923ABE137001E8CF9 /* ElementCell.swift */; };
 		306182BC23ABE4BE001E8CF9 /* ElementAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306182BB23ABE4BE001E8CF9 /* ElementAPIClient.swift */; };
 		306182BE23AC16C8001E8CF9 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306182BD23AC16C8001E8CF9 /* UIViewController+Alerts.swift */; };
 		306182C023AC18F9001E8CF9 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306182BF23AC18F9001E8CF9 /* FavoriteViewController.swift */; };
@@ -36,7 +36,7 @@
 		306182B023ABDFCD001E8CF9 /* UI-ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI-ImageExtension.swift"; sourceTree = "<group>"; };
 		306182B523ABE071001E8CF9 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		306182B723ABE105001E8CF9 /* ElementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementDetailViewController.swift; sourceTree = "<group>"; };
-		306182B923ABE137001E8CF9 /* elementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = elementCell.swift; sourceTree = "<group>"; };
+		306182B923ABE137001E8CF9 /* ElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCell.swift; sourceTree = "<group>"; };
 		306182BB23ABE4BE001E8CF9 /* ElementAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementAPIClient.swift; sourceTree = "<group>"; };
 		306182BD23AC16C8001E8CF9 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		306182BF23AC18F9001E8CF9 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				3061829E23ABDEF7001E8CF9 /* ElementViewController.swift */,
-				306182B923ABE137001E8CF9 /* elementCell.swift */,
+				306182B923ABE137001E8CF9 /* ElementCell.swift */,
 				306182B723ABE105001E8CF9 /* ElementDetailViewController.swift */,
 				306182BF23AC18F9001E8CF9 /* FavoriteViewController.swift */,
 			);
@@ -191,7 +191,7 @@
 				306182AF23ABDFAD001E8CF9 /* ElementData.swift in Sources */,
 				3061829F23ABDEF7001E8CF9 /* ElementViewController.swift in Sources */,
 				306182BE23AC16C8001E8CF9 /* UIViewController+Alerts.swift in Sources */,
-				306182BA23ABE137001E8CF9 /* elementCell.swift in Sources */,
+				306182BA23ABE137001E8CF9 /* ElementCell.swift in Sources */,
 				306182B123ABDFCD001E8CF9 /* UI-ImageExtension.swift in Sources */,
 				3061829B23ABDEF7001E8CF9 /* AppDelegate.swift in Sources */,
 				306182B623ABE071001E8CF9 /* NetworkHelper.swift in Sources */,

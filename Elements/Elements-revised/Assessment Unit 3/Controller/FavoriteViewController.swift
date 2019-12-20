@@ -59,6 +59,7 @@ class FavoriteViewController: UIViewController {
         }
         
         let element = elements[indexPath.row]
+        
         elementDetailVC.currentElement = element
     }
     
@@ -87,6 +88,7 @@ class FavoriteViewController: UIViewController {
       }
     }
 }
+
 //----------------------------------------------------------------
 
 
@@ -96,11 +98,13 @@ extension FavoriteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? elementCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? ElementCell else {
             fatalError("could not downcast a PodcastCell")
         }
         let element = elements[indexPath.row]
+        
         cell.configureCell(for: element)
+        
         return cell
     }
     

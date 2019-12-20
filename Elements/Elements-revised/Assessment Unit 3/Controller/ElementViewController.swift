@@ -73,7 +73,7 @@ extension ElementViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let ElementCell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? elementCell else {
+        guard let ElementCell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? ElementCell else {
             fatalError("could not downcast to Podcast Cell")
         }
         let element = elements[indexPath.row]

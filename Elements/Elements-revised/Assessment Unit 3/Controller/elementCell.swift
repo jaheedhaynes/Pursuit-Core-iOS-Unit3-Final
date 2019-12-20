@@ -8,7 +8,7 @@
 
 import UIKit
 
-class elementCell: UITableViewCell {
+class ElementCell: UITableViewCell {
 
     @IBOutlet weak var elementImage: UIImageView!
     @IBOutlet weak var elementNameLabel: UILabel!
@@ -17,6 +17,7 @@ class elementCell: UITableViewCell {
     private var urlString = ""
     
     //----------------------------------------------------------------
+    // MARK: Method to decipher which image to grab based on 'element number' Value
     
     func imageURLString(for element: Element) -> String {
         
