@@ -80,6 +80,7 @@ struct ElementAPIClient {
         let postedFavoriteEndpointURLString = "http://5c1d79abbc26950013fbcaa9.mockapi.io/api/v1/favorites"
         
         guard let url = URL(string: postedFavoriteEndpointURLString) else {
+            completion(.failure(.badURL(postedFavoriteEndpointURLString)))
             return
         }
         do {
@@ -92,6 +93,16 @@ struct ElementAPIClient {
             request.httpBody = data
             
             request.httpMethod = "POST"
+            
+            NetworkHelper.shared.performDataTask(with: request) { (result) in
+              switch result {
+              case .failure(let appError):
+                completion(.failure(.networkClientError(appError)))
+              case .success:
+                completion(.success(true))
+              }
+            }
+            
         } catch {
             completion(.failure(.networkClientError(error)))
         }
