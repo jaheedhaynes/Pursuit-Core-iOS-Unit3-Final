@@ -19,7 +19,7 @@ class ElementDetailViewController: UIViewController {
     @IBOutlet weak var discoveredBy: UILabel!
     
     
-    var element: Element?
+    var currentElement: Element?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class ElementDetailViewController: UIViewController {
 
     
     private func updateUI(){
-        guard let element = element else {
+        guard let element = currentElement else {
             fatalError("could not access element, verify it's in your segue method")
             }
         symbol.text = element.symbol
@@ -39,12 +39,13 @@ class ElementDetailViewController: UIViewController {
         meltingPoint.text = element.melt?.description
         boilingPoint.text = element.boil?.description
         discoveredBy.text = element.discoveredBy
+        navigationItem.title = element.name
         
         elementImageDVC.getImage(with: imageString(for: element)) {[weak self] (result) in
            switch result {
             case .failure:
               DispatchQueue.main.async {
-                self?.elementImageDVC.image = UIImage(systemName: "mic.fill")
+                self?.elementImageDVC.image = UIImage(systemName: "person.fill")
               }
             case .success(let image):
               DispatchQueue.main.async {
@@ -64,32 +65,32 @@ class ElementDetailViewController: UIViewController {
     
     @IBAction func favoriteElement(_ sender: UIBarButtonItem) {
         
-         sender.isEnabled = true
+        print("button pressed")
         
-        guard let element = element else {
-            fatalError("could not favorite podcast")
-           
-            return
+        guard let element = currentElement else {
+          showAlert(title: "Failed", message: "Unable to favorite this element, please try again.")
+          sender.isEnabled = true
+          return
+            
         }
         
-        let postedFavorite = Element(name: element.name, atomicMass: element.atomicMass, boil: element.boil,
-                                     discoveredBy: element.discoveredBy, melt: element.melt, number: element.number,
-                                     symbol: element.symbol, spectralImg: element.spectralImg, favoritedBy: "JAHEED H.")
+        let favorite = Element(name: element.name, atomicMass: element.atomicMass, boil: element.boil, discoveredBy: element.discoveredBy, melt: element.melt, number: element.number, symbol: element.symbol, favoritedBy: "JAHEED H.")
         
-        ElementAPIClient.postFavorite(for: postedFavorite) {[weak self] (result) in
+        ElementAPIClient.postFavorite(postFavorite: favorite) { [weak self] (result) in
             switch result {
-            case .failure:
+            case.failure(let appError):
                 DispatchQueue.main.async {
-                    self?.showAlert(title: "Error", message: "Can't add that element")
+                    self?.showAlert(title: "Can not Favorite Element, please try again", message: "\(appError)")
                 }
             case .success:
                 DispatchQueue.main.async {
-                    self?.showAlert(title: "Facvorite Posted", message: "Your Favorite Element has been favorited") {
+                    self?.showAlert(title: "Success", message: "Element has been added to favorites") {
                         alert in self?.dismiss(animated: true)
                     }
                 }
             }
         }
+        
     }
     
     //-----------------------------------------------------------------------------------------------------------------

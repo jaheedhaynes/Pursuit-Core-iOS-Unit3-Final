@@ -75,7 +75,7 @@ struct ElementAPIClient {
    //-------------------------------------------------------------------------------------------------------------
     //MARK: *** POST FAVORITE ***
     
-    static func postFavorite(for postFavorite: Element, completion: @escaping(Result<Bool,AppError>) -> ()) {
+    static func postFavorite(postFavorite: Element, completion: @escaping(Result<Bool,AppError>) -> ()) {
         
         let postedFavoriteEndpointURLString = "http://5c1d79abbc26950013fbcaa9.mockapi.io/api/v1/favorites"
         

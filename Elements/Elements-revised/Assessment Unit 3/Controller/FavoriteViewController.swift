@@ -52,12 +52,14 @@ class FavoriteViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationController = segue.destination as? UINavigationController,
             
-           let elementDetailVC = segue.destination as? ElementDetailViewController,
+            let elementDetailVC = navigationController.viewControllers.first as? ElementDetailViewController,
+            
             let indexPath = tableView.indexPathForSelectedRow else {
                 fatalError("could not downcast to PodcastDetailController")
         }
+        
         let element = elements[indexPath.row]
-        elementDetailVC.element = element
+        elementDetailVC.currentElement = element
     }
     
     //----------------------------------------------------------------
@@ -66,16 +68,20 @@ class FavoriteViewController: UIViewController {
     
     @objc func fetchFavorites() {
       ElementAPIClient.getFavorite { [weak self] (result) in
+        
         switch result {
+            
         case .failure(let appError):
           print("\(appError)")
           DispatchQueue.main.async {
             self?.refreshControl.endRefreshing()
           }
+            
         case .success(let element):
           DispatchQueue.main.async {
             self?.elements = element
             self?.refreshControl.endRefreshing()
+            
           }
         }
       }
@@ -90,7 +96,7 @@ extension FavoriteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? ElementCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? elementCell else {
             fatalError("could not downcast a PodcastCell")
         }
         let element = elements[indexPath.row]

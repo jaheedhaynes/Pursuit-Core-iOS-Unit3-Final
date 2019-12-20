@@ -8,11 +8,6 @@
 
 import Foundation
 
-
-//struct AllElements: Codable {
-//    let results: [Element]
-//}
-
 struct Element: Codable {
     
 let name: String // needed
@@ -22,7 +17,16 @@ let discoveredBy: String? // needed
 let melt: Double? // needed
 let number: Int // needed
 let symbol: String? // needed
-let spectralImg: String? // needed
+let favoritedBy: String? // needed
     
-let favoritedBy: String? // extra credit
+    enum CodingKeys: String, CodingKey {
+          case name
+          case atomicMass = "atomic_mass"
+          case boil
+          case discoveredBy = "discovered_by"
+          case melt
+          case number
+          case symbol
+          case favoritedBy
+      }
 }

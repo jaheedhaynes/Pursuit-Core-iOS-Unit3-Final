@@ -11,7 +11,7 @@ import UIKit
 class ElementViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+
     
     
     var elements = [Element]() {
@@ -29,9 +29,6 @@ class ElementViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        searchBar.delegate = self
-//        searchBar.autocapitalizationType = .none
-        searchElements(with: "")
         getElements()   
         
     }
@@ -45,37 +42,22 @@ class ElementViewController: UIViewController {
                 fatalError("could not downcast to ElementDetailViewController")
         }
         let element = elements[indexPath.row]
-        elementDetailVC.element = element
+        elementDetailVC.currentElement = element
     }
   
     //-----------------------------------------------------------------------------------------------------------------
     // MARK: METHOD to get the elements
     
      private func getElements() {
-           ElementAPIClient.getElement { [weak self](result) in
+        ElementAPIClient.getElement(completion: { [weak self](result) in
                switch result {
                case .success(let elements):
                    self?.elements = elements
                case .failure(let appError):
                    print("appError \(appError)")
                }
-           }
+           })
        }
-    
-    
-    //-----------------------------------------------------------------------------------------------------------------
-    // MARK: METHOD TO SEARCH ELEMENTS
-    
-    private func searchElements(with name: String) {
-        ElementAPIClient.getElement(completion: {[weak self] (result) in
-            switch result {
-            case.failure(let appError):
-                print("\(appError)")
-            case .success(let element):
-                self?.elements = element
-            }
-        })
-    }
 }
 
 
@@ -85,17 +67,20 @@ class ElementViewController: UIViewController {
 
 extension ElementViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        navigationItem.title = "Total Number of Elements: \(elements.count.description)"
+        
         return elements.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? ElementCell else {
+        guard let ElementCell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? elementCell else {
             fatalError("could not downcast to Podcast Cell")
         }
         let element = elements[indexPath.row]
-        cell.configureCell(for: element)
         
-        return cell
+        ElementCell.configureCell(for: element)
+        
+        return ElementCell
     }
     
     
@@ -106,13 +91,5 @@ extension ElementViewController: UITableViewDataSource {
 extension ElementViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
-    }
-}
-
-//----------------------------------------------------------------
-
-extension ElementViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchElements(with: searchText)
     }
 }
