@@ -20,13 +20,14 @@ class ElementCell: UITableViewCell {
 
     
     func configureCell(for element: Element) {
+        
         elementName.text = element.name
         atomicWeight.text = element.atomicMass?.description
         
-        guard let imageURL = element.spectralImg else {
-            elementImage.image = UIImage(systemName: "mic.fill")
-            return
-        }
+        let elementInt =  String(format: "%03d", element.number)
+        
+        let imageURL = "http://www.theodoregray.com/periodictable/Tiles/\(elementInt)/s7.JPG"
+        
         urlString = imageURL
         
         elementImage.getImage(with: imageURL) { [weak self] result in
